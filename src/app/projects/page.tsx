@@ -1,10 +1,15 @@
-'use client'
+import type { Metadata } from 'next'
 
-import React from 'react'
 import { Background, Header, Loading } from '~/components'
 import GalaxyThree from '~/components/GalaxyThree'
+import { TITLE } from '~/utils/constants'
 
-const Projects = () => {
+export const metadata: Metadata = {
+    title: `${TITLE} - Projects`,
+    description: "Here are the various projects I've crafted.",
+}
+
+export default async function Projects() {
     return (
         <Background>
             <Header />
@@ -14,5 +19,3 @@ const Projects = () => {
         </Background>
     )
 }
-
-export default Projects

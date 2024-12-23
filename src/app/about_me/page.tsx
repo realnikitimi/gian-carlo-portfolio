@@ -1,60 +1,22 @@
-'use client'
+import type { Metadata } from 'next'
 
-import React, { useState } from 'react'
 import { Background, Header } from '~/components'
+import AboutMeCategories from '~/components/AboutMeCategories'
 import GalaxyThree from '~/components/GalaxyThree'
-import { Section } from '~/components/Section'
-import * as Lib from '~/lib/_index'
-import { classesArrayToString } from '~/utils/classNames'
+import { TITLE } from '~/utils/constants'
 
-type LibType = 'musician' | 'web'
+export const metadata: Metadata = {
+    title: `${TITLE} - About me`,
+    description: 'Know more about the Developer behind these amazing website!',
+}
 
-const AboutMe = () => {
-    const values = ['web', 'musician'] as LibType[]
-    const [state, setState] = useState<Lib.SectionType>(Lib[values[0]])
-    const activeButtonClasses = ['bg-green-syntexia', 'font-bold']
-    const baseButtonClasses = [
-        'capitalize',
-        'p-2',
-        'rounded-lg',
-        'text-white-syntexia',
-    ]
-
-    function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
-        const button = e.currentTarget as HTMLButtonElement
-        button.parentElement?.querySelectorAll('button').forEach((btn) => {
-            btn.classList.remove(...activeButtonClasses)
-        })
-        button.classList.add(...activeButtonClasses)
-        setState(Lib[button.textContent as LibType] as Lib.SectionType)
-    }
-
+export default function AboutMe() {
     return (
         <Background>
             <Header />
             <GalaxyThree>
-                <>
-                    <div className="flex w-full items-center justify-center gap-2">
-                        {values.map((meAsA, index) => {
-                            const isFirstItem = index === 0
-                            return (
-                                <button
-                                    className={`${isFirstItem ? classesArrayToString(...activeButtonClasses) : ''} ${classesArrayToString(
-                                        ...baseButtonClasses
-                                    )}`}
-                                    key={meAsA}
-                                    onClick={handleClick}
-                                >
-                                    {meAsA}
-                                </button>
-                            )
-                        })}
-                    </div>
-                    <Section {...state} />
-                </>
+                <AboutMeCategories />
             </GalaxyThree>
         </Background>
     )
 }
-
-export default AboutMe

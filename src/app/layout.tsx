@@ -1,11 +1,12 @@
 import { Metadata } from 'next'
 import ProviderComponent from '~/redux/ProviderComponent'
+import { TITLE } from '~/utils/constants'
 import '~/app/globals.css'
 
 type RootLayoutProps = { children: React.ReactNode }
 
 const metadata: Metadata = {
-    title: 'Gian Carlo | Dev',
+    title: TITLE,
     description: 'Welcome to my Personalized Web Portfolio!',
 }
 
