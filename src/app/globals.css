@@ -1,11 +1,18 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
     --color-black-syntexia: #050505;
     --color-blue-syntexia: #120a3d;
     --color-green-syntexia: #68da23;
     --color-violet-syntexia: #412854;
     --color-white-syntexia: #f2f2f2;
+    --color-gray-transparent: color-mix(
+        in srgb,
+        var(--color-black-syntexia) 10%,
+        var(--color-white-syntexia) 30%
+    );
 
     --animate-spin-forever: spin-forever 600s infinite linear;
     --animate-color-spin: color-spin 1s linear;
@@ -26,7 +33,7 @@
             backgroundcolor: var(--color-white-syntexia);
         }
         25% {
-            backgroundcolor: #999;
+            backgroundcolor: var(--color-gray-transparent);
         }
     }
 
@@ -46,24 +53,24 @@
             radial-gradient(
                     42.94px at 50% 58px,
                     var(--color-black-syntexia) 99%,
-                    #0000 101%
+                    var(--color-gray-transparent) 101%
                 )
                 calc(50% - 40px) 0/80px 51% repeat-x,
             radial-gradient(
                     42.94px at 50% -38px,
-                    #0000 99%,
+                    var(--color-gray-transparent) 99%,
                     var(--color-black-syntexia) 101%
                 )
                 50% 20px/80px calc(51% - 20px) repeat-x,
             radial-gradient(
                     42.94px at 50% calc(100% - 58px),
                     var(--color-black-syntexia) 99%,
-                    #0000 101%
+                    var(--color-gray-transparent) 101%
                 )
                 calc(50% - 40px) 100%/80px 51% repeat-x,
             radial-gradient(
                     42.94px at 50% calc(100% + 38px),
-                    #0000 99%,
+                    var(--color-gray-transparent) 99%,
                     var(--color-black-syntexia) 101%
                 )
                 50% calc(100% - 20px) / 80px calc(51% - 20px) repeat-x;

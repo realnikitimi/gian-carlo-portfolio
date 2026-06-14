@@ -1,16 +1,12 @@
 'use client'
 
-import { Background, Header, Loading } from '~/components'
-import GalaxyThree from '~/components/GalaxyThree'
+import { Loading } from '~/components'
 
 const Projects = () => {
     return (
-        <Background>
-            <Header />
-            <GalaxyThree>
-                <Loading />
-            </GalaxyThree>
-        </Background>
+        <section>
+            <Loading />
+        </section>
     )
 }
 

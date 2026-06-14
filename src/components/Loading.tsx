@@ -1,19 +1,32 @@
-'use client'
-
-import React from 'react'
-
 const Loading = () => {
     return (
-        <div className="flex flex-wrap items-center justify-center gap-2">
-            <p className="flex flex-col text-center">
-                <span className="text-yellow-300">⚠ Men at work ⚠</span>
-                Upgrades coming soon
-            </p>
-            <p className="delay-1 animate-loading">.</p>
-            <p className="delay-2 animate-loading">.</p>
-            <p className="delay-3 animate-loading">.</p>
-        </div>
+        <section
+            className="flex flex-wrap items-center justify-center gap-2"
+            aria-description="loading component"
+        >
+            <div className="flex flex-col text-center">
+                <p className="text-yellow-300">⚠ Men at work ⚠</p>
+                <p className="text-black transition-colors duration-300 ease-in-out dark:text-white">
+                    Upgrades coming soon
+                </p>
+            </div>
+            <LoadingDot />
+            <LoadingDot delay="delay-2" />
+            <LoadingDot delay="delay-3" />
+        </section>
     )
 }
+
+type Delay = 'delay-2' | 'delay-3'
+type LoadingDotProps = {
+    delay?: Delay
+}
+const LoadingDot = (props: LoadingDotProps) => (
+    <p
+        className={`${props.delay ?? 'delay-1'} animate-loading text-black transition-colors duration-300 ease-in-out select-none dark:text-white`.trim()}
+    >
+        .
+    </p>
+)
 
 export default Loading
