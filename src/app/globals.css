@@ -1,26 +1,70 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+    --color-black-syntexia: #050505;
+    --color-blue-syntexia: #120a3d;
+    --color-green-syntexia: #68da23;
+    --color-violet-syntexia: #412854;
+    --color-white-syntexia: #f2f2f2;
+
+    --animate-spin-forever: spin-forever 600s infinite linear;
+    --animate-color-spin: color-spin 1s linear;
+    --animate-loading: loading infinite 900ms;
+
+    @keyframes spin-forever {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes color-spin {
+        0%,
+        100% {
+            backgroundcolor: var(--color-white-syntexia);
+        }
+        25% {
+            backgroundcolor: #999;
+        }
+    }
+
+    @keyframes loading {
+        0% {
+            opacity: 0;
+        }
+    }
+}
 
 @layer base {
     :root {
-        --accent: '#120a3d';
+        --accent: var(--color-blue-syntexia);
 
         /* mask generated from https://css-generators.com/wavy-shapes */
-        --mask: radial-gradient(42.94px at 50% 58px, #000 99%, #0000 101%)
+        --mask:
+            radial-gradient(
+                    42.94px at 50% 58px,
+                    var(--color-black-syntexia) 99%,
+                    #0000 101%
+                )
                 calc(50% - 40px) 0/80px 51% repeat-x,
-            radial-gradient(42.94px at 50% -38px, #0000 99%, #000 101%) 50% 20px/80px
-                calc(51% - 20px) repeat-x,
+            radial-gradient(
+                    42.94px at 50% -38px,
+                    #0000 99%,
+                    var(--color-black-syntexia) 101%
+                )
+                50% 20px/80px calc(51% - 20px) repeat-x,
             radial-gradient(
                     42.94px at 50% calc(100% - 58px),
-                    #000 99%,
+                    var(--color-black-syntexia) 99%,
                     #0000 101%
                 )
                 calc(50% - 40px) 100%/80px 51% repeat-x,
             radial-gradient(
                     42.94px at 50% calc(100% + 38px),
                     #0000 99%,
-                    #000 101%
+                    var(--color-black-syntexia) 101%
                 )
                 50% calc(100% - 20px) / 80px calc(51% - 20px) repeat-x;
     }
@@ -31,7 +75,7 @@
 
 @layer components {
     .wavy {
-        @apply bg-violet-syntexia;
+        background-color: var(--color-violet-syntexia);
         -webkit-mask: var(--mask);
         mask: var(--mask);
     }

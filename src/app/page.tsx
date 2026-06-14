@@ -3,23 +3,24 @@
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
+
 import { Background, Header, Loading } from '~/components'
-import { DIMENSION } from '~/utils/images'
 import GalaxyThree from '~/components/GalaxyThree'
+import { DIMENSION } from '~/utils/images'
 
 const Main = () => {
     return (
         <main>
             <div className="grid bg-white duration-300 ease-in-out dark:bg-black dark:text-white">
                 <GalaxyThree>
-                    <div className="isolate grid translate-y-16 grid-cols-2 bg-slate-300/80 py-20 duration-300 ease-in-out after:absolute after:inset-0 after:-z-20 after:-skew-y-6 after:bg-gradient-to-tr after:from-violet-syntexia after:to-violet-syntexia dark:bg-blue-syntexia/80 dark:after:from-violet-syntexia dark:after:to-green-syntexia">
+                    <div className="after:from-violet-syntexia after:to-violet-syntexia dark:bg-blue-syntexia/80 dark:after:from-violet-syntexia dark:after:to-green-syntexia isolate grid translate-y-16 grid-cols-2 bg-slate-300/80 py-20 duration-300 ease-in-out after:absolute after:inset-0 after:-z-20 after:-skew-y-6 after:bg-linear-to-tr">
                         <div className="flex flex-col gap-6 self-end p-8">
-                            <h1 className="w-max text-2xl font-bold text-slate-300 duration-300 ease-in-out dark:text-green-syntexia sm:text-3xl lg:text-5xl">
+                            <h1 className="dark:text-green-syntexia w-max text-2xl font-bold text-slate-300 duration-300 ease-in-out sm:text-3xl lg:text-5xl">
                                 Full-Stack Developer
                             </h1>
-                            <p className="text-sm text-slate-300 dark:text-white sm:text-base">
+                            <p className="text-sm text-slate-300 sm:text-base dark:text-white">
                                 Hello there! My name is
-                                <span className="text-sm font-semibold text-slate-300 duration-300 ease-in-out dark:text-green-syntexia sm:text-base">
+                                <span className="dark:text-green-syntexia text-sm font-semibold text-slate-300 duration-300 ease-in-out sm:text-base">
                                     {` Gian Carlo Carranza, `}
                                 </span>
                                 A passionate Developer based in the Philippines.
@@ -45,7 +46,7 @@ const Main = () => {
 }
 
 const MyApp = () => {
-    const observer = useRef<IntersectionObserver | null>()
+    const observer = useRef<IntersectionObserver>(null)
     const [num] = useState(1)
 
     const DynamicFooter = dynamic(() => import('~/components/Footer'), {

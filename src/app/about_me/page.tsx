@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+
 import { Background, Header } from '~/components'
 import GalaxyThree from '~/components/GalaxyThree'
 import { Section } from '~/components/Section'
