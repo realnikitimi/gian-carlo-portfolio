@@ -1,14 +1,31 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-// import type { RootState } from '~/redux/store'
+import type { Vector3Like } from 'three'
+
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+
+import { randWithVariation } from '~/utils/random'
+import { CAMERA_POSITION } from '~/utils/threejsContants'
 
 // Define a type for the slice state
 interface UI {
     darkmode: boolean
+    starPositions: [number, number, number][]
+    cameraPosition: Vector3Like
+}
+
+type InitializeStarPositionsProps = {
+    quantity: number
+    position: number
 }
 
 // Define the initial state using that type
 const initialState: UI = {
     darkmode: true,
+    starPositions: [],
+    cameraPosition: {
+        x: CAMERA_POSITION,
+        y: CAMERA_POSITION,
+        z: CAMERA_POSITION,
+    },
 }
 
 const darkmodeName = 'darkmode'
@@ -20,7 +37,6 @@ export const ui = createSlice({
     reducers: {
         // Use the PayloadAction type to declare the contents of `action.payload`
         setTheme: (state, action: PayloadAction<string>) => {
-            console.log(action.payload)
             state.darkmode = JSON.parse(action.payload)
             localStorage.setItem(darkmodeName, action.payload)
         },
@@ -30,18 +46,44 @@ export const ui = createSlice({
                 state.darkmode = JSON.parse(darkmodeContainer)
             else localStorage.setItem(darkmodeName, 'true')
         },
+        initializeStarPositions: (
+            state,
+            action: PayloadAction<InitializeStarPositionsProps>
+        ) => {
+            state.starPositions = Array.from({
+                length: action.payload.quantity,
+            }).map(() => [
+                randWithVariation(
+                    action.payload.position * -1,
+                    action.payload.position * 2,
+                    action.payload.position
+                ),
+                randWithVariation(
+                    action.payload.position * -1,
+                    action.payload.position * 2,
+                    action.payload.position
+                ),
+                randWithVariation(
+                    action.payload.position * -1,
+                    action.payload.position * 2,
+                    action.payload.position
+                ),
+            ])
+        },
+        updateCameraPositions: (
+            state,
+            action: PayloadAction<UI['cameraPosition']>
+        ) => {
+            state.cameraPosition = action.payload
+        },
     },
 })
 
-export const { setTheme, getUI } = ui.actions
-
-// Other code such as selectors can use the imported `RootState` type
-// export const selectCount = (state: RootState) => state.joyice
-
-// export const incrementAsync = (amount: number) => (dispatch: AppDispatch) => {
-//   setTimeout(() => {
-//     dispatch(incrementByAmount(amount))
-//   }, 1000)
-// }
+export const {
+    setTheme,
+    getUI,
+    initializeStarPositions,
+    updateCameraPositions,
+} = ui.actions
 
 export default ui.reducer

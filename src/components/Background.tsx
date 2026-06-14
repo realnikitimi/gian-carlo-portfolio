@@ -8,7 +8,7 @@ const Background = (props: any) => {
 
     return (
         <div
-            className={`${darkmode ? 'dark bg-white dark:bg-black dark:text-white' : ''} ${baseStyles}`}
+            className={`${darkmode ? 'dark bg-white dark:bg-black dark:text-white' : ''} ${baseStyles}`.trim()}
         >
             {props.children}
         </div>

@@ -1,18 +1,17 @@
-'use client'
-
-import React from 'react'
-
 const Loading = () => {
     return (
-        <div className="flex flex-wrap items-center justify-center gap-2">
+        <section
+            className="flex flex-wrap items-center justify-center gap-2"
+            aria-description="loading component"
+        >
             <p className="flex flex-col text-center">
                 <span className="text-yellow-300">⚠ Men at work ⚠</span>
                 Upgrades coming soon
             </p>
-            <p className="delay-1 animate-loading">.</p>
-            <p className="delay-2 animate-loading">.</p>
-            <p className="delay-3 animate-loading">.</p>
-        </div>
+            <p className="animate-loading delay-1">.</p>
+            <p className="animate-loading delay-2">.</p>
+            <p className="animate-loading delay-3">.</p>
+        </section>
     )
 }
 

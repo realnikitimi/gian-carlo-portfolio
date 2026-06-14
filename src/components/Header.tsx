@@ -28,8 +28,8 @@ const Header = () => {
     }
 
     return (
-        <header className="fixed inset-x-0 z-10 flex items-center bg-white/90 p-6 duration-300 ease-in-out dark:bg-black/80 dark:text-white">
-            <div className="flex h-10 w-10 items-center gap-1">
+        <header className="fixed inset-x-0 z-10 flex items-center justify-between p-6 duration-300 ease-in-out">
+            <section className="flex h-10 w-10 items-center gap-1">
                 <Image
                     draggable={false}
                     alt="Syntexia Logo"
@@ -38,8 +38,8 @@ const Header = () => {
                     height={DIMENSION.icon}
                     width={DIMENSION.icon}
                 />
-            </div>
-            <div className="absolute left-64 flex items-center justify-center gap-10 capitalize">
+            </section>
+            <section className="flex items-center justify-center gap-10 capitalize">
                 {ROUTES.map((route) => {
                     return (
                         <Link key={route} href={route} passHref>
@@ -53,22 +53,22 @@ const Header = () => {
                         </Link>
                     )
                 })}
-            </div>
-            <div className="absolute right-10 z-10 flex items-center gap-10">
-                <div className="inline-block h-8 w-8">
+            </section>
+            <section className="flex items-center gap-10">
+                <div className="relative h-8 w-12">
                     <input
                         type="checkbox"
                         aria-checked={darkmode}
-                        className="absolute inset-0 z-10 rounded-xl border-2 border-[#120a3d] bg-[#120a3d] p-2 capitalize text-white opacity-0"
+                        className="border-blue-syntexia bg-blue-syntexia absolute z-1 h-full w-full rounded-xl border-2 p-2 text-white capitalize opacity-0"
                         onClick={handleThemeButton}
                     />
                     <span
                         aria-checked={darkmode}
-                        className="absolute inset-0 -z-10 w-1/3 cursor-pointer rounded-full bg-slate-300 shadow-sm duration-300 ease-in-out before:absolute before:inset-y-0 before:z-10 before:w-8 before:rounded-full before:bg-white before:duration-300 before:ease-in-out aria-checked:bg-green-syntexia aria-checked:before:translate-x-6 aria-checked:before:animate-color-spin"
+                        className="aria-checked:bg-green-syntexia aria-checked:before:animate-color-spin absolute -z-1 h-full w-full cursor-pointer rounded-full bg-slate-300 shadow-sm duration-300 ease-in-out before:absolute before:inset-y-0 before:z-10 before:w-8 before:rounded-full before:bg-white before:duration-300 before:ease-in-out aria-checked:before:translate-x-6"
                     />
                 </div>
                 <p>Portfolio</p>
-            </div>
+            </section>
         </header>
     )
 }

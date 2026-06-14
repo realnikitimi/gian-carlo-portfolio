@@ -3,7 +3,6 @@
 import React, { useState } from 'react'
 
 import { Background, Header } from '~/components'
-import GalaxyThree from '~/components/GalaxyThree'
 import { Section } from '~/components/Section'
 import * as Lib from '~/lib/_index'
 import { classesArrayToString } from '~/utils/classNames'
@@ -33,27 +32,25 @@ const AboutMe = () => {
     return (
         <Background>
             <Header />
-            <GalaxyThree>
-                <>
-                    <div className="flex w-full items-center justify-center gap-2">
-                        {values.map((meAsA, index) => {
-                            const isFirstItem = index === 0
-                            return (
-                                <button
-                                    className={`${isFirstItem ? classesArrayToString(...activeButtonClasses) : ''} ${classesArrayToString(
-                                        ...baseButtonClasses
-                                    )}`}
-                                    key={meAsA}
-                                    onClick={handleClick}
-                                >
-                                    {meAsA}
-                                </button>
-                            )
-                        })}
-                    </div>
-                    <Section {...state} />
-                </>
-            </GalaxyThree>
+            <>
+                <div className="flex w-full items-center justify-center gap-2">
+                    {values.map((meAsA, index) => {
+                        const isFirstItem = index === 0
+                        return (
+                            <button
+                                className={`${isFirstItem ? classesArrayToString(...activeButtonClasses) : ''} ${classesArrayToString(
+                                    ...baseButtonClasses
+                                )}`}
+                                key={meAsA}
+                                onClick={handleClick}
+                            >
+                                {meAsA}
+                            </button>
+                        )
+                    })}
+                </div>
+                <Section {...state} />
+            </>
         </Background>
     )
 }
