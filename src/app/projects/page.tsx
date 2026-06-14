@@ -1,13 +1,12 @@
 'use client'
 
-import { Background, Header, Loading } from '~/components'
+import { Loading } from '~/components'
 
 const Projects = () => {
     return (
-        <Background>
-            <Header />
+        <section>
             <Loading />
-        </Background>
+        </section>
     )
 }
 

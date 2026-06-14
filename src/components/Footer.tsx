@@ -15,11 +15,11 @@ type SocialDetailType = {
 const Footer = () => {
     const social: SocialDetailType[] = [
         {
-            href: 'https://www.facebook.com/SyntexiaNikiTimi',
+            href: 'https://www.facebook.com/realnikitimi',
             alt: 'facebook',
         },
         {
-            href: 'https://github.com/nikitimi',
+            href: 'https://github.com/realnikitimi',
             alt: 'github',
         },
         {
@@ -34,7 +34,7 @@ const Footer = () => {
     ]
 
     return (
-        <footer className="absolute inset-x-0 bottom-0 flex flex-col items-center justify-center gap-2 p-4 text-white">
+        <footer className="absolute top-100 left-1/2 flex -translate-x-1/2 flex-col items-center justify-center gap-2 p-4 text-white">
             <div className="flex flex-col flex-wrap gap-2">
                 <nav className="bg-white-syntexia/50 flex flex-wrap items-center justify-center gap-4 rounded-lg px-4 py-2">
                     {social
@@ -61,7 +61,7 @@ const Footer = () => {
             {/* <div>
                 <Link
                     className="text-start underline"
-                    href="mailto:carranzagcarlo@gmail.com"
+                    href="mailto:giancarloacarranza@gmail.com"
                     passHref
                 >
                     Contact Me

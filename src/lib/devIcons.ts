@@ -1,10 +1,12 @@
-type DevIconType = {
+export interface ValueType {
     name: string
+}
+export type DevIconType = ValueType & {
     type: 'original' | 'plain'
 }
-
-const DEV_ICON_BASE_URL = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/'
-const devIconLanguages: DevIconType[] = [
+export const DEV_ICON_BASE_URL =
+    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/'
+export const devIconLanguages: DevIconType[] = [
     {
         name: 'javascript',
         type: 'original',
@@ -30,7 +32,7 @@ const devIconLanguages: DevIconType[] = [
         type: 'original',
     },
 ]
-const devIconTechstacks: DevIconType[] = [
+export const devIconTechstacks: DevIconType[] = [
     {
         name: 'html5',
         type: 'original',
@@ -103,15 +105,7 @@ const devIconTechstacks: DevIconType[] = [
     },
 ]
 
-function processDevIconToUrl(props: DevIconType) {
+export function processDevIconToUrl(props: DevIconType) {
     const { name, type } = props
     return `${DEV_ICON_BASE_URL}${name}/${name}-${type}.svg`
-}
-
-export type { DevIconType }
-export {
-    DEV_ICON_BASE_URL,
-    devIconLanguages,
-    devIconTechstacks,
-    processDevIconToUrl,
 }

@@ -1,10 +1,11 @@
 import {
     devIconLanguages,
     devIconTechstacks,
+    ValueType,
     type DevIconType,
-} from './devIcons'
+} from '~/lib/devIcons'
 
-type SectionValueType = Omit<DevIconType, 'type'>
+type SectionValueType = ValueType
 type SectionType = {
     sectionTitle: string
     sectionItems: {
@@ -25,11 +26,11 @@ const composers = [
     { name: 'Shaun Choo' },
 ]
 const pieces = [
-    { name: 'Ballade No 1 in G Minor Op 23' },
+    { name: 'Chopin - Ballade No 1 in G Minor Op 23' },
     { name: 'Debussy - Reverie' },
-    { name: 'Transcendental Etude No.8' },
+    { name: 'Liszt - Transcendental Etude No.8' },
     { name: 'Rachmaninoff/Kreisler - Liebesleid' },
-    { name: 'Caprice No. 24 in A minor' },
+    { name: 'Liszt - Caprice No. 24 in A minor' },
 ]
 const web: SectionType = {
     sectionTitle: 'Web Developer',

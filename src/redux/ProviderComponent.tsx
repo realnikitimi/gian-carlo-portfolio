@@ -8,7 +8,7 @@ import store from '~/redux/store'
 import { useAppDispatch } from '~/redux/hooks'
 import { getUI, initializeStarPositions } from '~/redux/reducers/uiReducer'
 import { RANDOM_POSITION, STAR_QUANTITIES } from '~/utils/threejsContants'
-import GalaxyThree from '~/components/GalaxyThree'
+import { Background, GalaxyThree, Header } from '~/components'
 
 type RootLayoutProps = {
     children: React.ReactNode
@@ -39,7 +39,8 @@ const App = ({ children }: RootLayoutProps) => {
     return (
         <>
             <GalaxyThree />
-            {children}
+            <Header />
+            <Background>{children}</Background>
         </>
     )
 }

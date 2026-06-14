@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { Canvas, RootState } from '@react-three/fiber'
+import { type SyntheticEvent, useRef } from 'react'
+import { Canvas, type RootState } from '@react-three/fiber'
 import { Color, DirectionalLight } from 'three'
 
 import CustomOrbitControl from '~/components/GalaxyThree/CustomOrbitControl'
@@ -20,7 +20,7 @@ const GalaxyThree = () => {
         number,
         number,
     ]
-    const starPositions = useAppSelector((state) => state.ui.starPositions)
+    const starPositions = useAppSelector((s) => s.ui.starPositions)
 
     function handleCanvasOnCreate({ gl, camera, scene }: RootState) {
         scene.background = new Color(isDarkMode ? BLACK : WHITE)
@@ -36,11 +36,19 @@ const GalaxyThree = () => {
         return () => window.removeEventListener('resize', handleResize)
     }
 
+    function handleCanvasOnLoad(e: SyntheticEvent<HTMLDivElement>) {
+        e.currentTarget.classList.remove('bg-black')
+    }
+
     return (
-        <div className="fixed inset-0">
+        <section
+            className="fixed inset-0 -z-1"
+            aria-description="galaxy-container"
+        >
             <Canvas
-                className="h-full w-full"
+                className="h-full w-full bg-black"
                 camera={{ position: cameraPosition, far: 2000 }}
+                onLoad={handleCanvasOnLoad}
                 onCreated={handleCanvasOnCreate}
             >
                 <directionalLight
@@ -63,7 +71,7 @@ const GalaxyThree = () => {
                     />
                 ))}
             </Canvas>
-        </div>
+        </section>
     )
 }
 
