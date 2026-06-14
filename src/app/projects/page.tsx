@@ -35,6 +35,7 @@ const initialState: InitialState = {
                 'zod',
                 'uploadthing',
                 'typescript',
+                'sass',
             ],
             status: 'ongoing',
         },
@@ -120,7 +121,7 @@ const RealSyntexia = (props: RealSyntexiaProps) => {
     return (
         <section className="flex">
             {items.map(({ title, imageSrc, stacks, description, status }) => (
-                <div key={crypto.randomUUID()} className="w-screen shrink p-4">
+                <div key={title} className="w-screen shrink p-4">
                     <div className="dark:bg-violet-syntexia/5 bg-violet-syntexia/90 dark:border-blue-syntexia/5 rounded-xl border-2 border-transparent p-4 transition-colors duration-300 ease-in-out">
                         <h2 className="bg-green-syntexia/90 dark:bg-white-syntexia/50 w-max rounded-xl p-2 font-black text-white transition-colors duration-300 ease-in-out dark:text-black">
                             {title}
@@ -135,8 +136,8 @@ const RealSyntexia = (props: RealSyntexiaProps) => {
                                     alt="preview"
                                     src={imageSrc ?? '/favicon.ico'}
                                     width="720"
-                                    height="600"
-                                    className="bg-green-syntexia/90 dark:bg-white-syntexia/50 rounded-xl object-contain object-center p-4 px-8 transition-colors duration-300 ease-in-out"
+                                    height="420"
+                                    className="bg-green-syntexia/90 dark:bg-white-syntexia/50 h-105 w-180 rounded-xl object-contain object-center p-4 px-8 transition-colors duration-300 ease-in-out"
                                 />
                             </Link>
                         </div>
